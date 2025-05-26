@@ -1,18 +1,18 @@
 import React from "react";
 
 const brandLogos = [
-  "/public/images/hp.svg",
-  "/public/images/acer.png",
-  "/public/images/asus.svg",
-  "/public/images/samsung.svg",
-  "/public/images/apple.svg",
-  "/public/images/mci.svg",
-  "/public/images/mi.svg",
-  "/public/images/vivo.svg",
-  "/public/images/amazon.png",
-  "/public/images/nike.png",
-  "/public/images/adidas.png",
-  "/public/images/rolex.png",
+  "images/hp.svg",
+  "images/acer.png",
+  "images/asus.svg",
+  "images/samsung.svg",
+  "images/apple.svg",
+  "images/mci.svg",
+  "images/mi.svg",
+  "images/vivo.svg",
+  "images/amazon.png",
+  "images/nike.png",
+  "images/adidas.png",
+  "images/rolex.png",
 ];
 
 export const Brands = () => {

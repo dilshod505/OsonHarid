@@ -59,7 +59,7 @@ function Header() {
               type="submit"
               className="flex items-center justify-center gap-5"
             >
-              <img src="/public/images/next-store.svg" alt="logo" />
+              <img src="/images/next-store.svg" alt="logo" />
             </button>
           </Link>
           <div>

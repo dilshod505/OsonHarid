@@ -1,13 +1,12 @@
 import React from "react";
 
 const stores = [
-  { name: "Texnomart", logo: "/public/texnomart.svg" },
-  { name: "MediaPark", logo: "/public/media park.svg" },
-  { name: "GoodZone", logo: "/public/goodzone.svg" },
-  { name: "Idea", logo: "/public/media park.svg" },
-  { name: "Volna", logo: "/public/elmakon.svg" },
-  { name: "Elmakon", logo: "/public/sandiq-store.svg" },
-  // qo‘shimcha do‘konlar bo‘lishi mumkin
+  { name: "Texnomart", logo: "/texnomart.svg" },
+  { name: "MediaPark", logo: "/media park.svg" },
+  { name: "GoodZone", logo: "/goodzone.svg" },
+  { name: "Idea", logo: "/media park.svg" },
+  { name: "Volna", logo: "/elmakon.svg" },
+  { name: "Elmakon", logo: "/sandiq-store.svg" },
 ];
 
 export const Store = () => {
