@@ -16,10 +16,10 @@ export const SwiperComponent = () => {
         mousewheel={true}
         keyboard={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper w-[1240px] rounded-xl"
+        className="mySwiper w-[1300px] rounded-xl"
       >
         <SwiperSlide>
-          <img src="/public/images/swiper-1.png" alt="" />
+          <img src="/public/images/swiper-1.png" alt=""  />
         </SwiperSlide>
         <SwiperSlide>
           <img src="/public/images/swiper-1.png" alt="" />

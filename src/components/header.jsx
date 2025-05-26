@@ -1,4 +1,4 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { FaRegHeart, FaShoppingCart } from "react-icons/fa";
 import { Badge, Button, Drawer } from "antd";
 import Search from "antd/es/input/Search";
 import { useContext, useState } from "react";
@@ -9,6 +9,8 @@ import { useLocationParams } from "../hooks/use-location-params";
 import { LuLogOut } from "react-icons/lu";
 import { FiLogIn } from "react-icons/fi";
 import { HiMiniBars3 } from "react-icons/hi2";
+import { AiOutlineBars } from "react-icons/ai";
+
 
 function Header() {
   const context = useContext(ReducerContext);
@@ -51,7 +53,7 @@ function Header() {
   return (
     <div className="mb-28">
       <div className="py-4 px-24 flex items-center justify-between bg-white shadow-md fixed top-0 left-0 right-0 z-10">
-        <div>
+        <div className="flex items-center gap-14">
           <Link to={"/"}>
             <button
               type="submit"
@@ -60,6 +62,14 @@ function Header() {
               <img src="/public/images/next-store.svg" alt="logo" />
             </button>
           </Link>
+          <div>
+            <Link to={"/categories"} className="hidden md:flex">
+              <span className="flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold bg-gradient-to-r from-red-500 to-blue-500 group">
+                <AiOutlineBars className="group-hover:rotate-180 transition-transform duration-300" size={20} />
+                <span>KATALOG</span>
+              </span>
+            </Link>
+          </div>
         </div>
         <Search
           placeholder="input search text"
@@ -69,14 +79,21 @@ function Header() {
           onChange={(e) => setSearch(e.target.value)}
           loading={loading}
           enterButton
-          className="w-[800px]"
-/>
+          className="w-[600px]"
+        />
         <div className="hidden md:flex items-center gap-5">
+          <Link to={"/favorites"}>
+            <div className="flex items-center gap-2">
+              <span className="flex items-center rounded-full text-blue-600 bg-[#ecf3ff] px-3 py-3 cursor-pointer">
+                <FaRegHeart size={20} />
+              </span>
+            </div>
+          </Link>
           <Link to={"/card"}>
             <Badge count={cardCount}>
-              <div className="flex items-center rounded-full bg-white px-3 py-3 cursor-pointer">
+              <div className="flex items-center rounded-full text-blue-600 bg-[#ecf3ff] px-3 py-3 cursor-pointer">
                 <button>
-                  <FaShoppingCart size={26} />
+                  <FaShoppingCart size={20} />
                 </button>
               </div>
             </Badge>

@@ -7,12 +7,13 @@ import useToastify from "../hooks/use-toastify";
 
 function ProductDetail() {
   const context = useContext(ReducerContext);
-  const { toastSuccess } = useToastify();
+  const { toastSuccess, toastError } = useToastify();
   const { id } = useParams();
   const [product, setProduct] = useState<Record<string, any> | null>(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [form] = Form.useForm();
 
   useEffect(() => {
     const fetchProductById = async () => {
@@ -49,45 +50,32 @@ function ProductDetail() {
     setIsModalOpen(false);
   };
 
-  const onFinish = async (values: Record<string, any>) => {
-    toastSuccess("Buyurtma yuborilmoqda...");
-    setIsLoading(true);
-
-    const caption = `
-📦 *Yangi Buyurtma!*
-
-🧍 Ism: ${values.fullName}
-📱 Telefon: ${values.phone}
-📍 Manzil: ${values.address}
-
-🛒 Mahsulot: *${product.title}*
-💵 Narxi: $${product.price}
-`;
+  const onFinish = (values: Record<string, any>) => {
+    toastSuccess("Buying item...");
 
     try {
-      await fetch(
-        `https://api.telegram.org/bot7510974924:AAEL6AyXD3FFa8nrelTDaW6uwa0zAz6lAb0/sendPhoto
-`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            chat_id: "2142298432",
-            photo: product.images[0], // Mahsulot rasmi
-            caption,
-            parse_mode: "Markdown",
-          }),
-        }
-      );
+      const telegramBotToken = "7510974924:AAEL6AyXD3FFa8nrelTDaW6uwa0zAz6lAb0";
+      const chatId = "2142298432";
+      const text = `
+      Ism: ${values.fullName}\n
+      Telefon raqam: ${values.phone}\n
+      Manzil: ${values.address}\n
+`;
+      const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
 
-      toastSuccess("Buyurtma muvaffaqiyatli yuborildi!");
-      setIsModalOpen(false);
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Message sent to Telegram:", data);
+          form.resetFields();
+          toastSuccess("messages.success");
+        })
+        .catch((error) => {
+          console.error("Error sending to Telegram:", error);
+          toastError("messages.error");
+        });
     } catch (error) {
-      console.error("Telegramga yuborishda xatolik:", error);
-    } finally {
-      setIsLoading(false);
+      console.error("Error submitting form:", error);
     }
   };
 

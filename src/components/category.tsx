@@ -9,9 +9,9 @@ const Category = () => {
 
   return (
     <div className="mt-16">
-      <div className={"py-12"}>
+      <div className={""}>
         <div className={"flex items-center justify-between w-full"}>
-          <h1 className={"text-2xl font-bold"}>Category</h1>
+          <h1 className={"text-3xl font-bold mb-5"}>Category</h1>
           <Link to={"/categories"}>
             <Button type={"link"}>View all</Button>
           </Link>
@@ -24,9 +24,11 @@ const Category = () => {
                 <Card
                   cover={
                     <img
-                      src={"https://picsum.photos/" + category.id + "/300/300"}
+                      src={
+                        "https://picsum.photos/200/300?random=" + category.id
+                      }
                       alt={category.name}
-                      className={"w-full  object-contain mt-5"}
+                      className={"w-full object-contain h-50"}
                     />
                   }
                 >
